@@ -3,7 +3,7 @@
 #' @param R A correlation matrix.
 #' @param factors The number of factors. 
 #'
-#' @return The 
+#' @return The surrogate model for NEST.
 #' @export
 #'
 #' @examples

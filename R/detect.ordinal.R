@@ -1,6 +1,6 @@
 #' Detect potential ordinal variable.
 #' 
-#' @description Detect potential ordinal variables and compute the dentisity of each level on a gaussian distribution which can be taken into account for sampling techniques like \code{raplce.ordinal()}.
+#' @description Detect potential ordinal variables and compute the dentisity of each level on a gaussian distribution which can be taken into account for sampling techniques like \code{replace.ordinal()}.
 #'
 #' @param data A data set.
 #' @param nOrdinal The minimal of values allowed before being flags as ordinal. Default is 10.
@@ -9,7 +9,7 @@
 #' André Achim (Matlab)
 #' P.-O. Caron (R)
 #' 
-#' @return A list of detected ordinal variables and the density of each value
+#' @return A list of detected ordinal variables and the density of each value.
 #' 
 #' @references 
 #' À ajouter.
@@ -30,7 +30,7 @@ detect.ordinal <- function(data, nOrdinal = 10){
   } else {
     var.ord <- apply(data[var.ord], MARGIN = 2, ordinal.limits)
   }
-  return(var.ord)
+  return(structure(var.ord, class = "ordinal"))
 }
 
 ordinal.limits <- function(variable){

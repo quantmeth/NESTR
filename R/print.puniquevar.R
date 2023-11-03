@@ -4,6 +4,8 @@
 #' @param x An object of class "p.uniquevar".
 #' @param ... Further arguments for other methods, ignored for class "p.uniquevar".
 #'
+#' @author 
+#' P.-O. Caron
 #' @export
 #'
 #' @examples
