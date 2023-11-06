@@ -15,10 +15,10 @@
 #' out <-  detect.ordinal(mydata)
 #' print(out)
 print.ordinal <- function(x, ...){
-  nvar <- length(names(x))
-  if(nvar == 0){
+  nvar <- length(x$Variable)
+  if(is.null(x$Variable)){
     cat("No variable appears to be ordinal.")
-  } else if (nvar==1) {
+  } else if (nvar == 1) {
     cat(paste0("The variable ", names(x)," is probably ordinal.\nIt has less than ",max(unlist(lapply(x, length)))-1, " levels.\n"))
   } else {
     cat(paste0("The variables ", paste0(names(x), collapse = ", ")," are probably ordinal.\nThey have less than ",max(unlist(lapply(x, length)))-1, " levels."))

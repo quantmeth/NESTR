@@ -19,18 +19,21 @@
 #'
 #' @examples
 #' set.seed(73)
-#' mydata <- data.frame(Likert = sample(1:7, replace = TRUE, size = 20),
-#'                      Bernouilli = sample(0:1, replace = TRUE, size = 20))
-#' detect.ordinal(mydata)
+#' exData <- data.frame(Likert = sample(1:7, replace = TRUE, size = 200),
+#'                      Bernouilli = sample(0:1, replace = TRUE, size = 200))
+#' detect.ordinal(exData)
 detect.ordinal <- function(data, nOrdinal = 10){
   nOrd <- (apply(data, MARGIN = 2, FUN=function(x) sum(table(unique(x)))))
   var.ord <- names(which(nOrd <= nOrdinal))
   if(length(var.ord) == 0){
     var.ord <- NULL
   } else {
-    var.ord <- apply(data[var.ord], MARGIN = 2, ordinal.limits)
+    lim <- apply(data[var.ord], MARGIN = 2, ordinal.limits)
   }
-  return(structure(var.ord, class = "ordinal"))
+  out <- list(Variable = var.ord,
+              Ordinal.limits = lim)
+  return(structure(out, class = "ordinal"))
+
 }
 
 ordinal.limits <- function(variable){

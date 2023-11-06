@@ -23,6 +23,7 @@ p.unique.variable <- function(x){
   
   out <- data.frame(Fvalue = FF,
                     p = p)
+  
   return(structure(list(Results = out), 
                    class = "puniquvar"))
 }
